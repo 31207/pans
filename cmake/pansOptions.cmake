@@ -26,7 +26,7 @@ target_link_options(pans_options INTERFACE
 )
 
 target_compile_options(pans_options INTERFACE
-    $<$<CONFIG:DEBUG>:PANS_DEBUG>
+    $<$<CONFIG:DEBUG>:-DPANS_DEBUG>
 )
 
 # 接下来针对不同编译情况(debug release等)给予不同编译选项

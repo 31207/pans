@@ -3,7 +3,8 @@
 file(GLOB_RECURSE PANS_SOURCES CONFIGURE_DEPENDS *.cpp *.cc *.c)
 file(GLOB_RECURSE PANS_HEADERS CONFIGURE_DEPENDS *.hpp *.h)
 
-add_library(pans STATIC ${PANS_SOURCES} ${PANS_HEADERS})
+add_library(pans STATIC ${PANS_SOURCES} ${PANS_HEADERS}
+        ../tests/test_macros.cpp)
 
 target_include_directories(pans
     PUBLIC
