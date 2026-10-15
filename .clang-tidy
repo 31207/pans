@@ -1,0 +1,51 @@
+
+Checks: '-*,readability-identifier-naming'
+
+CheckOptions:
+  # 类名：PascalCase
+  - key: readability-identifier-naming.ClassCase
+    value: CamelCase
+
+  # 常量：UPPER_SNAKE_CASE
+  - key: readability-identifier-naming.ConstantCase
+    value: UPPER_CASE
+
+  - key: readability-identifier-naming.GlobalConstantCase
+    value: UPPER_CASE
+
+  - key: readability-identifier-naming.StaticConstantCase
+    value: UPPER_CASE
+
+  # 非静态成员函数：lowerCamelCase
+  - key: readability-identifier-naming.MethodCase
+    value: camelBack
+
+  # 静态成员函数：PascalCase
+  - key: readability-identifier-naming.StaticMethodCase
+    value: CamelCase
+
+  # 全局函数：PascalCase
+  - key: readability-identifier-naming.GlobalFunctionCase
+    value: CamelCase
+
+  # 非静态成员变量：m_ + lowerCamelCase
+  - key: readability-identifier-naming.MemberCase
+    value: camelBack
+
+  - key: readability-identifier-naming.MemberPrefix
+    value: m_
+
+  # 静态成员变量：s_ + lowerCamelCase
+  - key: readability-identifier-naming.StaticVariableCase
+    value: camelBack
+
+  - key: readability-identifier-naming.StaticVariablePrefix
+    value: s_
+
+  # 函数参数：snake_case
+  - key: readability-identifier-naming.ParameterCase
+    value: lower_case
+
+  # 局部变量：snake_case
+  - key: readability-identifier-naming.LocalVariableCase
+    value: lower_case
