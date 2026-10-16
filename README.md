@@ -10,6 +10,12 @@
 
 更详细的文档参见`./docs`
 
-### 进度
+### cmake常用命令速查
+
+- `cmake -S <path1> -B <path2>`: 读取path1下的CMakeLists.txt, 构建并放在path2下. eg: `cmake -S . -B build`
+- `cmake --build <path>`: 运行path下的构建文件, 就不用cd进去再make了
+
+### 进度 
 
 - 2026-10-15 进度至5p
+- 2026-10-16 进度至6p, 学习线程互斥与同步的概念, 并在cpp中实践

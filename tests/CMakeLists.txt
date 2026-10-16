@@ -15,8 +15,7 @@ foreach (TEST_SOURCE IN LISTS PANS_TEST_SOURCES)
     if (TARGET "${TEST_NAME}")
         message(FATAL_ERROR "${TEST_NAME}已存在")
     endif ()
-    add_executable("${TEST_NAME}" "${TEST_SOURCE}"
-            test_macros.cpp)
+    add_executable("${TEST_NAME}" "${TEST_SOURCE}")
 
     target_link_libraries("${TEST_NAME}" PRIVATE pans Threads::Threads)
     set_target_properties("${TEST_NAME}"
