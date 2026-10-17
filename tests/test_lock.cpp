@@ -24,6 +24,7 @@ uint64_t OperationsForThread(std::size_t thread_index, std::size_t thread_count)
 // 使用thread_count个线程, 跑operation这个操作
 template<typename Operation>
 std::chrono::nanoseconds BenchmarkThreads(std::size_t thread_count, Operation &&operation) {
+    // 其实ptrdiff_t就是个有符号整数, 直接给个有符号整数完全没问题, 不是很能理解这玩意啥作用
     std::latch ready(static_cast<std::ptrdiff_t>(thread_count));
     std::latch start_gate(1);
     std::latch finished(static_cast<std::ptrdiff_t>(thread_count));
@@ -32,18 +33,18 @@ std::chrono::nanoseconds BenchmarkThreads(std::size_t thread_count, Operation &&
     threads.reserve(thread_count);
     for (std::size_t i = 0; i < thread_count; ++i) {
         threads.emplace_back([&, i]() {
-            ready.count_down();
-            start_gate.wait();
+            ready.count_down(); // 每启动一个线程, ready值-1
+            start_gate.wait(); // 等待该信号量降至0
             operation(i, OperationsForThread(i, thread_count));
             finished.count_down();
         });
     }
-    ready.wait();
-    const auto BEGIN = std::chrono::high_resolution_clock::now();
+    ready.wait(); // 确保所有工作线程都已经准备就绪，再开始计时
+    const auto BEGIN = std::chrono::steady_clock::now();
     start_gate.count_down();
     finished.wait();
-    const auto END = std::chrono::high_resolution_clock::now();
-    for (auto& thread: threads) {
+    const auto END = std::chrono::steady_clock::now();
+    for (auto &thread: threads) {
         thread.join();
     }
     return std::chrono::duration_cast<std::chrono::nanoseconds>(END - BEGIN);
@@ -82,6 +83,7 @@ std::chrono::nanoseconds BenchmarkAtomic(std::size_t thread_count) {
     });
     return ELAPSED;
 }
+
 // CAS（Compare-And-Swap，比较并交换）
 std::chrono::nanoseconds BenchmarkAtomicCas(std::size_t thread_count) {
     g_atomicCounter.store(0, std::memory_order_relaxed);
@@ -115,7 +117,7 @@ void PrintResult(std::string_view name, double total_nanoseconds) {
 
 int main(int argc, char *argv[]) {
     if (argc != 2) {
-        std::cerr << "Usage: " << argv[0] << " <thread_count>" << std::endl;
+        std::cerr << "Usage: " << argv[0] << " <target>" << std::endl;
         return 1;
     }
     g_target = std::stoi(argv[1]);

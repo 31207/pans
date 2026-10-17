@@ -1,5 +1,5 @@
-#ifndef MACROS_H
-#define MACROS_H
+#ifndef INCLUDE_PANS_MACROS_H
+#define INCLUDE_PANS_MACROS_H
 
 #include <iostream>
 #include <cassert>
