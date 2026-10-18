@@ -4,7 +4,7 @@ template <typename T>
 concept fp_or_int = std::is_floating_point_v<T> || std::is_integral_v<T>;
 
 template <fp_or_int T>
-void display_bits(T&& num) {
+void DisplayBits(T&& num) {
     std::size_t length = sizeof(T) * 8;
     std::uint64_t* real = reinterpret_cast<uint64_t*>(&num);
     std::uint64_t mask = 1;
@@ -16,8 +16,8 @@ void display_bits(T&& num) {
 
 
 int main() {
-    display_bits(1.1);
-    display_bits(114514);
-    display_bits(-1);
+    DisplayBits(1.1);
+    DisplayBits(114514);
+    DisplayBits(-1);
     return 0;
 }

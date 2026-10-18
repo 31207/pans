@@ -3,8 +3,7 @@
 file(GLOB_RECURSE PANS_SOURCES CONFIGURE_DEPENDS *.cpp *.cc *.c)
 file(GLOB_RECURSE PANS_HEADERS CONFIGURE_DEPENDS *.hpp *.h)
 
-add_library(pans STATIC ${PANS_SOURCES} ${PANS_HEADERS}
-        ../tests/test_macros.cpp)
+add_library(pans STATIC ${PANS_SOURCES} ${PANS_HEADERS})
 
 target_include_directories(pans
     PUBLIC
@@ -33,4 +32,3 @@ install(TARGETS pans
 install(FILES ${PANS_HEADERS}
     DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/pans
 )
-

@@ -24,8 +24,8 @@ namespace pans::detail {
                 return;
             }
             if (m_overflow.empty()) {
-                const std::size_t required_capacity = m_size + size;
-                m_overflow.reserve(std::max(required_capacity, INLINE_CAPACITY * 2)); // ?
+                const std::size_t REQUIRED_CAPACITY = m_size + size;
+                m_overflow.reserve(std::max(REQUIRED_CAPACITY, INLINE_CAPACITY * 2)); // ?
                 m_overflow.insert(m_overflow.end(), m_inline.data(), m_inline.data() + m_size);
             }
             m_overflow.insert(m_overflow.end(), data, data + size);

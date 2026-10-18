@@ -51,7 +51,7 @@ template<typename T>
 std::chrono::nanoseconds BenchmarkMutex(std::uint64_t thread_count) noexcept {
     T mutex;
     g_counter = 0;
-    const auto elapsed = BenchmarkThreads(thread_count, [&mutex](std::size_t, std::uint64_t operations) {
+    const auto ELAPSED = BenchmarkThreads(thread_count, [&mutex](std::size_t, std::uint64_t operations) {
         for (std::uint64_t i = 0; i < operations; ++i) {
             std::lock_guard<T> lock(mutex);
             ++g_counter;
@@ -60,7 +60,7 @@ std::chrono::nanoseconds BenchmarkMutex(std::uint64_t thread_count) noexcept {
     if (g_counter != g_target) {
         throw std::runtime_error("BenchmarkMutex: thread count mismatch");
     }
-    return elapsed;
+    return ELAPSED;
 }
 
 // 跑指定次数的函数, 取平均执行时间
@@ -98,7 +98,7 @@ public:
         }
     }
 
-    [[nodiscard]] bool try_lock() noexcept {
+    [[nodiscard]] bool tryLock() noexcept {
         return !m_mutex.test_and_set(std::memory_order_acquire);
     }
 
@@ -120,9 +120,9 @@ int main(int argc, char *argv[]) {
 
     std::cout << std::fixed << std::setprecision(2);
     std::cout << "operations: " << g_target << ", average of " << RUNS << " runs" << std::endl;
-    const std::vector<std::size_t> thread_counts = {1, 2, 4, 8, 10, 20, 32, 48, 72};
+    const std::vector<std::size_t> THREAD_COUNTS = {1, 2, 4, 8, 10, 20, 32, 48, 72};
     // 当线程数开始大于cpu核心数量的时候, std::mutex的优势会逐渐显现出来, 自旋锁会越来越慢
-    for (auto &thread_count: thread_counts) {
+    for (auto &thread_count: THREAD_COUNTS) {
         std::cout << "threads: " << thread_count << std::endl;
         PrintResult("pthread_spinlock: ", Run([&]() { return BenchmarkMutex<pans::SpinLock>(thread_count); }));
         PrintResult("atomic_flag spinlock ", Run([&]() { return BenchmarkMutex<SpinLock2>(thread_count); }));
