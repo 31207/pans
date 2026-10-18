@@ -1,5 +1,5 @@
-#include <pans/macros.h>
 #include <limits>
+#include <pans/macros.h>
 #include <type_traits>
 
 static_assert(sizeof(u8) == 1 && std::is_unsigned_v<u8>);
@@ -31,4 +31,3 @@ int main() {
     test_assert_macros();
     return 0;
 }
-

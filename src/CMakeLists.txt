@@ -1,4 +1,4 @@
-# 递归收集当前目录下的原文件,做成文件列表
+# 递归(GLOB_RECURSE)收集当前目录下的原文件,做成文件列表
 # CONFIGURE_DEPENDS代表有更改时自动更新生成
 file(GLOB_RECURSE PANS_SOURCES CONFIGURE_DEPENDS *.cpp *.cc *.c)
 file(GLOB_RECURSE PANS_HEADERS CONFIGURE_DEPENDS *.hpp *.h)
