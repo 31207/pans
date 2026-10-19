@@ -2,7 +2,6 @@
 #define CORE_LOGGER_LOG_RECORD_H
 
 #include <chrono>
-#include <source_location>
 #include <stdint.h>
 #include <pans/logger/log_level.h>
 #include <pans/macros.h>
@@ -18,8 +17,7 @@ namespace pans::detail {
         u64 m_fiberId = 0; // 协程id
         std::string_view m_threadName = ""; // 线程名
         std::string_view m_fileName = ""; // 文件名
-        std::string_view m_functionName = ""; // 函数名
-        std::source_location m_location; // C++20标准, 编译器内计算出源文件位置
+        u32 m_line = 0;
     };
 }
 

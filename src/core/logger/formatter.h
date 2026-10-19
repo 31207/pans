@@ -17,18 +17,17 @@ public:
     public:
         virtual ~FormatItem() = default;
         virtual void format(const LogRecordView &record,
-                            FormattedRecordBuffer &out) const noexcept = 0;
+                            FormattedRecordBuffer &out) const = 0;
     };
     explicit Formatter(std::string_view pattern);
     void format(const LogRecordView &record,
-                FormattedRecordBuffer &output) const noexcept;
+                FormattedRecordBuffer &output) const;
     [[nodiscard]] const std::string &getPattern() const noexcept {
         return m_pattern;
     };
-
+    void addLiteral(std::string& literal);
 private:
-    int parse() noexcept;
-    void addLiteral(std::string literal) noexcept;
+    int parse();
 
     std::string m_pattern = "";
     std::vector<std::unique_ptr<FormatItem>> m_items;
