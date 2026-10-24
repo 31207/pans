@@ -3,7 +3,7 @@ set(INNER_TEST_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/test_log_buffer.cpp")
 
 add_executable("${INNER_TEST_NAME}" "${INNER_TEST_SOURCE}")
 target_link_libraries("${INNER_TEST_NAME}" PRIVATE pans Threads::Threads)
-target_include_directories("${INNER_TEST_NAME}" PRIVATE "${PROJECT_SOURCE_DIR}/src/core")
+target_include_directories("${INNER_TEST_NAME}" PRIVATE "${PROJECT_SOURCE_DIR}/pans/src")
 set_target_properties("${INNER_TEST_NAME}" PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${PANS_TEST_OUTPUT_DIRECTORY}")
 
 

@@ -1,5 +1,5 @@
-#ifndef CORE_LOGGER_BUFFER_H
-#define CORE_LOGGER_BUFFER_H
+#ifndef SRC_LOGGER_BUFFER_H
+#define SRC_LOGGER_BUFFER_H
 
 #include <algorithm>
 #include <array>

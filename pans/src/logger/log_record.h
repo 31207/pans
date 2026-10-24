@@ -1,5 +1,5 @@
-#ifndef CORE_LOGGER_LOG_RECORD_H
-#define CORE_LOGGER_LOG_RECORD_H
+#ifndef SRC_LOGGER_LOG_RECORD_H
+#define SRC_LOGGER_LOG_RECORD_H
 
 #include <chrono>
 #include <stdint.h>

@@ -38,7 +38,7 @@ message(STATUS "Compiler default work jobs: ${CMAKE_BUILD_PARALLEL_LEVEL}")
 
 include(cmake/pansOptions.cmake)
 
-add_subdirectory(src)
+add_subdirectory(pans)
 if (PANS_BUILD_TESTS)
     enable_testing()
     add_subdirectory(tests)

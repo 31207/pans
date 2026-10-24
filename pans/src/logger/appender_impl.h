@@ -1,5 +1,5 @@
-#ifndef CORE_LOGGER_APPENDER_IMPL_H
-#define CORE_LOGGER_APPENDER_IMPL_H
+#ifndef SRC_LOGGER_APPENDER_IMPL_H
+#define SRC_LOGGER_APPENDER_IMPL_H
 #include "pans/logger/log_level.h"
 #include <atomic>
 #include <cstdio>

@@ -5,7 +5,7 @@
 #include <mutex>
 #include <pans/macros.h>
 
-#include "../src/include/pans/macros.h"
+#include <pans/macros.h>
 // 对于复杂类型, 使用mutex搭配lock_guard或unique_lock来上锁
 // 简单类型(1,2,4,8字节类型), 使用atomic会快很多, 编译器会生成CPU原子指令.
 

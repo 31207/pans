@@ -1,5 +1,5 @@
-#ifndef CORE_LOGGER_FORMATTER_H
-#define CORE_LOGGER_FORMATTER_H
+#ifndef SRC_LOGGER_FORMATTER_H
+#define SRC_LOGGER_FORMATTER_H
 
 #include <logger/buffer.h>
 #include <logger/buffer_config.h>
